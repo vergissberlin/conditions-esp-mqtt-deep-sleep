@@ -23,3 +23,5 @@ const int   otaPort               = 8266;
 const int   pinLedTop             = BUILTIN_LED;
 const int   pinFlash              = 0;
 
+#define     FORCE_DEEPSLEEP
+#define     SERIAL_BAUD          115200

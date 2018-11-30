@@ -13,5 +13,5 @@ void setupPin() {
   pinMode(pinLedTop, OUTPUT);
 }
 
-void loopPins() {
+void loopPin() {
 }

@@ -30,8 +30,8 @@ Adafruit_MQTT_Client mqtt(&client, MQTT_SERVER, MQTT_SERVERPORT, MQTT_USERNAME, 
 
 // ****************************** Feeds *****************************************
 // Notice MQTT paths for AIO follow the form: <username>/feeds/<feedname>
-Adafruit_MQTT_Publish mqttPublishTemperature = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME MQTT_FEED_TEMPERATURE);
-Adafruit_MQTT_Publish mqttPublishHumidity = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME MQTT_FEED_HUMIDITY);
+Adafruit_MQTT_Publish mqttPublishTemperature  = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME MQTT_FEED_TEMPERATURE);
+Adafruit_MQTT_Publish mqttPublishHumidity     = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME MQTT_FEED_HUMIDITY);
 
 // *************************** Sketch Code **************************************
 
@@ -44,20 +44,20 @@ void MQTT_connect() {
     return;
   }
 
-  Serial.println("Connecting to MQTT\t\"" + String(MQTT_SERVER) + "\"");
-  Serial.print(F("Status\t"));
+  Serial.println("Connecting to MQTT \"" + String(MQTT_SERVER) + "\"");
+  Serial.print(F("Status "));
   uint8_t retries = 3;
   while ((ret = mqtt.connect()) != 0) { // connect will return 0 for connected
-       Serial.println(mqtt.connectErrorString(ret));
-       Serial.print(F("Retrying MQTT connection in 5 seconds … "));
-       mqtt.disconnect();
-       delay(5000); // wait 5 seconds
-       retries--;
-       if (retries == 0) {
-         while (1);
-       }
+    Serial.println(mqtt.connectErrorString(ret));
+    Serial.print(F("Retrying MQTT connection in 5 seconds … "));
+    mqtt.disconnect();
+    delay(5000); // wait 5 seconds
+    retries--;
+    if (retries == 0) {
+     while (1);
+    }
   }
-  Serial.println(F("MQTT Connected!"));
+  Serial.println(F("MQTT Connected!\n"));
 }
 
 void mqttPinTemperature(double state) {

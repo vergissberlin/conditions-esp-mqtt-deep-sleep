@@ -35,11 +35,12 @@
 #include "mqtt.h"
 //#include "ota.h"
 #include "pin.h"
+#include "sleep.h"
 #include "dht.h"
 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(SERIAL_BAUD);
   delay(1000);
   Serial.println(F("\n\t✰✰✰  Conditions booting ✰✰✰ "));
   
@@ -54,7 +55,7 @@ void setup() {
 void loop() {
   loopMqtt();
   //loopOta();
-  //loopPin();
+  loopPin();
   loopDHT();
-
+  loopSleep();
 }
