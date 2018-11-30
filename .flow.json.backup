@@ -1,0 +1,27 @@
+[
+    {
+        "id": "aaec1fdb.ceee98",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b0db88e9.7ade",
+        "type": "inject",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 166.5,
+        "y": 108,
+        "wires": [
+            []
+        ]
+    }
+]
