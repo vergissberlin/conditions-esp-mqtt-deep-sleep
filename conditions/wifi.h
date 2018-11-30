@@ -16,22 +16,22 @@ void setupWifi() {
   Serial.print(F("Connecting to \""));
   Serial.print(wifiSsid);
   Serial.print(F("\"\t"));
-  
+
   // WiFi.mode(WIFI_STA);
-  WiFi.hostname(wifiHostname);
+  WiFi.hostname(wifiHostname + ESP.getChipId());
   WiFi.begin(wifiSsid, wifiPassword);
-  
+
   while (WiFi.status() != WL_CONNECTED) {
     connectInteration++;
     connectInterationMaximum++;
-    blinkError(pinLedTop,"",true);
+    blinkError(pinLed, "", true);
     if (connectInteration == 12) {
       Serial.print("☉\n\t\t\t");
       connectInteration = 0;
     } else {
-      Serial.print(F("☉"));  
+      Serial.print(F("☉"));
     }
-    if(connectInterationMaximum == 144) {
+    if (connectInterationMaximum == 144) {
       byte numSsid = WiFi.scanNetworks();
       Serial.print("SSID List:\t\t");
       Serial.println(numSsid);
@@ -39,11 +39,11 @@ void setupWifi() {
       delay(15000);
       ESP.restart();
     }
-    delay(3000);    
+    delay(3000);
   }
   Serial.println();
   Serial.println(F("Status\t\t\tWiFi connected!"));
-  Serial.print(F("IP address\t\t")); 
+  Serial.print(F("IP address\t\t"));
   Serial.println(WiFi.localIP());
   Serial.print("GW address\t\t");
   Serial.println(WiFi.gatewayIP());

@@ -1,15 +1,5 @@
 /*
-  Coffee bin
-
-  MQTT bin project for coffee-bin https://coffee-bin-mqtt.readthedocs.io/
-
-  Created 11 September 2018
-  By André Lademann <vergissberlin@gmail.com>
-
-  https://github.com/vergissberlin/coffee-bin-mqtt
-*/
-/*
-  Coffee bin
+  Conditions
 
   MQTT bin project for coffee-bin https://coffee-bin-mqtt.readthedocs.io/
 
@@ -54,7 +44,7 @@ void MQTT_connect() {
     delay(5000); // wait 5 seconds
     retries--;
     if (retries == 0) {
-     while (1);
+      while (1);
     }
   }
   Serial.println(F("MQTT Connected!\n"));
@@ -62,15 +52,15 @@ void MQTT_connect() {
 
 void mqttPinTemperature(double state) {
   if (! mqttPublishTemperature.publish(state)) {
-    blinkError(pinLedTop, "MQTT temperature failed.",true);
+    blinkError(pinLed, "MQTT temperature failed.", true);
   } else {
     Serial.print("\tTemperature: " + String(state) + " °C");
-  }  
+  }
 }
 
 void mqttPinHumidity(double state) {
   if (! mqttPublishHumidity.publish(state)) {
-    blinkError(pinLedTop, "MQTT humidity failed.",true);
+    blinkError(pinLed, "MQTT humidity failed.", true);
   } else {
     Serial.println("\tHumidity: " + String(state) + " %");
   }

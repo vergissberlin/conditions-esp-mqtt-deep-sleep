@@ -10,8 +10,12 @@
 */
 
 void setupPin() {
-  pinMode(pinLedTop, OUTPUT);
+  pinMode(pinLed, OUTPUT);
 }
 
 void loopPin() {
+  digitalWrite(pinLed, LOW);  
+  delay(600);
+  digitalWrite(pinLed, HIGH);
+  delay(600);
 }

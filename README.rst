@@ -25,3 +25,33 @@ Hardware
     - Flash Mode:   DIO
     - Flash Speed:  40 MHz
 - DHT22
+
+
+Development
+===========
+
+FTDI
+----
+
+Driver: https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver
+
+ESP01
+-----
+
+
+- Tools ➤ Board ➤ Generic ESP8266
+- Tools ➤ Upload Speed ➤ 115200
+- Tools ➤ CPU Frequency ➤ 80 
+- Tools ➤ Crystal Frequency ➤ 26MHz
+- Tools ➤ Flash Size ➤ 1M (no SPIFFS)
+- Tools ➤ Flash Mode ➤ DIO
+- Tools ➤ Flash Frequency ➤ 40 MHz
+- Tools ➤ Reset Mode ➤ DIO
+- Tools ➤ Debug Port ➤ Disabled
+- Tools ➤ Debug Level ➤ None
+- Tools ➤ Builtin Led ➤ 1
+- Tools ➤ IwIP Varrianr ➤ v2 Lower Memory
+- Tools ➤ Erease Flash: All Flash Contents
+- Tools ➤ Programmer ➤ USBasp
+
+https://cdn.instructables.com/FMB/MPX4/JCUUFKU6/FMBMPX4JCUUFKU6.LARGE.jpg?auto=webp&width=273
