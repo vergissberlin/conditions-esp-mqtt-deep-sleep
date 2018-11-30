@@ -2,24 +2,365 @@
     {
         "id": "aaec1fdb.ceee98",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Conditions",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "b0db88e9.7ade",
-        "type": "inject",
+        "id": "fa408ea0.c7f7b8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Adafruit",
+        "broker": "io.adafruit.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": ""
+    },
+    {
+        "id": "f8823f19.3585b8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    },
+    {
+        "id": "46b69da5.90d2f4",
+        "type": "ui_group",
+        "z": "",
+        "name": "Conditions",
+        "tab": "f8823f19.3585b8",
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e3bbe7b5.6d9e6",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "deep-purple",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "dark"
+            }
+        },
+        "site": {
+            "name": "Conditions",
+            "hideToolbar": "true",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "none",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 64,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "2c074f01.c83108",
+        "type": "mqtt in",
+        "z": "aaec1fdb.ceee98",
+        "name": "conditions.temperature",
+        "topic": "vergissberlin/feeds/conditions.temparature",
+        "qos": "2",
+        "broker": "fa408ea0.c7f7b8",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "a70b107b.825bb",
+                "da74a5e1.4a69c8"
+            ]
+        ]
+    },
+    {
+        "id": "41f80c2b.3ee23c",
+        "type": "mqtt in",
+        "z": "aaec1fdb.ceee98",
+        "name": "conditions.humidity",
+        "topic": "vergissberlin/feeds/conditions.humidity",
+        "qos": "2",
+        "broker": "fa408ea0.c7f7b8",
+        "x": 170,
+        "y": 200,
+        "wires": [
+            [
+                "fb36931d.087068",
+                "dbbe960c.848178",
+                "72ab1733.9d6748"
+            ]
+        ]
+    },
+    {
+        "id": "a70b107b.825bb",
+        "type": "ui_gauge",
         "z": "aaec1fdb.ceee98",
         "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 166.5,
-        "y": 108,
+        "group": "46b69da5.90d2f4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "-20",
+        "max": "40",
+        "colors": [
+            "#00B500",
+            "#E6E600",
+            "#CA3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 470,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "fb36931d.087068",
+        "type": "ui_gauge",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "46b69da5.90d2f4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00B500",
+            "#E6E600",
+            "#CA3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 460,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "da74a5e1.4a69c8",
+        "type": "ui_chart",
+        "z": "aaec1fdb.ceee98",
+        "name": "Temperature chart",
+        "group": "46b69da5.90d2f4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-20",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 490,
+        "y": 160,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "dbbe960c.848178",
+        "type": "ui_chart",
+        "z": "aaec1fdb.ceee98",
+        "name": "Humidity chart",
+        "group": "46b69da5.90d2f4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Humidity",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "dd HH:mm",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 480,
+        "y": 240,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "72ab1733.9d6748",
+        "type": "average-bars",
+        "z": "aaec1fdb.ceee98",
+        "name": "Humidity",
+        "title": "",
+        "period": "day",
+        "yMin": "auto",
+        "yMax": "auto",
+        "showBarsValue": true,
+        "showScaleValue": true,
+        "showLastValue": true,
+        "showAverageValue": true,
+        "showMinimumValue": true,
+        "showMaximumValue": true,
+        "maxBar": 30,
+        "topColor": "#FF0000",
+        "bottomColor": "#FFFF00",
+        "unit": "%",
+        "fontColor": "#AAAAAA",
+        "barStyle": "Equalizer",
+        "decimal": 1,
+        "x": 460,
+        "y": 280,
+        "wires": [
+            [
+                "5839c1a5.23b6a"
+            ]
+        ]
+    },
+    {
+        "id": "5839c1a5.23b6a",
+        "type": "ui_template",
+        "z": "aaec1fdb.ceee98",
+        "group": "46b69da5.90d2f4",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 680,
+        "y": 280,
         "wires": [
             []
         ]
