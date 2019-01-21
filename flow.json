@@ -7,6 +7,38 @@
         "info": ""
     },
     {
+        "id": "3bfa1c6.68b46e4",
+        "type": "tab",
+        "label": "Alexa",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f3ffaee7.bf291",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "553f1134.e6b828",
+        "type": "subflow",
+        "name": "An FHEM",
+        "info": "",
+        "in": [
+            {
+                "x": 320,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "44d49df5.fd78b4"
+                    }
+                ]
+            }
+        ],
+        "out": []
+    },
+    {
         "id": "fa408ea0.c7f7b8",
         "type": "mqtt-broker",
         "z": "",
@@ -36,17 +68,19 @@
         "type": "ui_tab",
         "z": "",
         "name": "Home",
-        "icon": "dashboard"
+        "icon": "dashboard",
+        "order": 1
     },
     {
         "id": "46b69da5.90d2f4",
         "type": "ui_group",
         "z": "",
-        "name": "Conditions",
+        "name": "Charts Temperature",
         "tab": "f8823f19.3585b8",
-        "disp": false,
+        "order": 3,
+        "disp": true,
         "width": "6",
-        "collapse": false
+        "collapse": true
     },
     {
         "id": "e3bbe7b5.6d9e6",
@@ -128,13 +162,13 @@
         },
         "site": {
             "name": "Conditions",
-            "hideToolbar": "true",
+            "hideToolbar": "false",
             "allowSwipe": "false",
             "lockMenu": "false",
             "allowTempTheme": "none",
             "dateFormat": "DD/MM/YYYY",
             "sizes": {
-                "sx": 64,
+                "sx": 48,
                 "sy": 48,
                 "gx": 6,
                 "gy": 6,
@@ -144,6 +178,83 @@
                 "py": 0
             }
         }
+    },
+    {
+        "id": "4d3c030b.3919a4",
+        "type": "ui_group",
+        "z": "",
+        "name": "Temperature",
+        "tab": "f8823f19.3585b8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "63b8d67e.867bc",
+        "type": "ui_group",
+        "z": "",
+        "name": "Humidity",
+        "tab": "f8823f19.3585b8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b0815f8b.e0ace",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Average",
+        "icon": "dashboard",
+        "order": 2
+    },
+    {
+        "id": "2eaf6bd8.e63d64",
+        "type": "ui_group",
+        "z": "",
+        "name": "Temperature",
+        "tab": "b0815f8b.e0ace",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b4ed370f.0bb2c8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Charts Humidity",
+        "tab": "f8823f19.3585b8",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "3ccd643c.fc204c",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "mqtt",
+        "port": "1883",
+        "clientid": "nodered",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "/Service/nodered/status",
+        "birthQos": "0",
+        "birthPayload": "started",
+        "willTopic": "/Service/nodered/status",
+        "willQos": "0",
+        "willPayload": "crashed"
+    },
+    {
+        "id": "51cafaad.034724",
+        "type": "github-credentials",
+        "z": "",
+        "name": "NodeRedUser"
     },
     {
         "id": "2c074f01.c83108",
@@ -185,15 +296,15 @@
         "type": "ui_gauge",
         "z": "aaec1fdb.ceee98",
         "name": "",
-        "group": "46b69da5.90d2f4",
+        "group": "4d3c030b.3919a4",
         "order": 0,
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "Temperature",
+        "title": "Temperature 01",
         "label": "°C",
         "format": "{{value}}",
-        "min": "-20",
+        "min": "-5",
         "max": "40",
         "colors": [
             "#00B500",
@@ -202,7 +313,7 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 470,
+        "x": 600,
         "y": 120,
         "wires": []
     },
@@ -211,12 +322,12 @@
         "type": "ui_gauge",
         "z": "aaec1fdb.ceee98",
         "name": "",
-        "group": "46b69da5.90d2f4",
+        "group": "63b8d67e.867bc",
         "order": 0,
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "Humidity",
+        "title": "Humidity 01",
         "label": "%",
         "format": "{{value}}",
         "min": 0,
@@ -228,7 +339,7 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 460,
+        "x": 590,
         "y": 200,
         "wires": []
     },
@@ -236,12 +347,12 @@
         "id": "da74a5e1.4a69c8",
         "type": "ui_chart",
         "z": "aaec1fdb.ceee98",
-        "name": "Temperature chart",
+        "name": "",
         "group": "46b69da5.90d2f4",
-        "order": 0,
+        "order": 1,
         "width": 0,
         "height": 0,
-        "label": "Temperature",
+        "label": "Temperature 01",
         "chartType": "line",
         "legend": "false",
         "xformat": "dd HH:mm",
@@ -267,7 +378,7 @@
             "#C5B0D5"
         ],
         "useOldStyle": false,
-        "x": 490,
+        "x": 600,
         "y": 160,
         "wires": [
             [],
@@ -278,12 +389,12 @@
         "id": "dbbe960c.848178",
         "type": "ui_chart",
         "z": "aaec1fdb.ceee98",
-        "name": "Humidity chart",
-        "group": "46b69da5.90d2f4",
-        "order": 0,
+        "name": "",
+        "group": "b4ed370f.0bb2c8",
+        "order": 4,
         "width": 0,
         "height": 0,
-        "label": "Humidity",
+        "label": "Humidity 01",
         "chartType": "line",
         "legend": "false",
         "xformat": "dd HH:mm",
@@ -309,7 +420,7 @@
             "#C5B0D5"
         ],
         "useOldStyle": false,
-        "x": 480,
+        "x": 590,
         "y": 240,
         "wires": [
             [],
@@ -320,11 +431,482 @@
         "id": "72ab1733.9d6748",
         "type": "average-bars",
         "z": "aaec1fdb.ceee98",
-        "name": "Humidity",
-        "title": "",
-        "period": "day",
-        "yMin": "auto",
-        "yMax": "auto",
+        "name": "Humidity 01",
+        "title": "Humidity 01",
+        "period": "hour",
+        "yMin": "0",
+        "yMax": "100",
+        "showBarsValue": false,
+        "showScaleValue": false,
+        "showLastValue": false,
+        "showAverageValue": true,
+        "showMinimumValue": true,
+        "showMaximumValue": true,
+        "maxBar": 30,
+        "topColor": "#FF0000",
+        "bottomColor": "#FFFF00",
+        "unit": "%",
+        "fontColor": "#AAAAAA",
+        "barStyle": "Rectangle",
+        "decimal": "2",
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "5839c1a5.23b6a"
+            ]
+        ]
+    },
+    {
+        "id": "5839c1a5.23b6a",
+        "type": "ui_template",
+        "z": "aaec1fdb.ceee98",
+        "group": "2eaf6bd8.e63d64",
+        "name": "",
+        "order": 0,
+        "width": "6",
+        "height": "4",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": false,
+        "templateScope": "local",
+        "x": 800,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "78e421f1.4432c",
+        "type": "ui_audio",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "46b69da5.90d2f4",
+        "voice": "de-DE",
+        "always": "",
+        "x": 580,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "6ecf1907.0f6fa",
+        "type": "template",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Die Temperatur beträgt {{payload}} °C",
+        "output": "str",
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [
+                "78e421f1.4432c"
+            ]
+        ]
+    },
+    {
+        "id": "2f6c9cbb.45130c",
+        "type": "mqtt in",
+        "z": "aaec1fdb.ceee98",
+        "name": "conditions.02-temperature",
+        "topic": "vergissberlin/feeds/conditions.02-temperature",
+        "qos": "2",
+        "broker": "fa408ea0.c7f7b8",
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "e55308ef.32b438",
+                "da68b3fa.469bc8"
+            ]
+        ]
+    },
+    {
+        "id": "6866f8e3.3cadc",
+        "type": "mqtt in",
+        "z": "aaec1fdb.ceee98",
+        "name": "conditions.02-humidity",
+        "topic": "vergissberlin/feeds/conditions.02-humidity",
+        "qos": "2",
+        "broker": "fa408ea0.c7f7b8",
+        "x": 180,
+        "y": 460,
+        "wires": [
+            [
+                "2d8df4d6.55269c",
+                "175ceb8.c940015",
+                "2804b736.825a28"
+            ]
+        ]
+    },
+    {
+        "id": "e55308ef.32b438",
+        "type": "ui_gauge",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "4d3c030b.3919a4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature 02",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "-5",
+        "max": "40",
+        "colors": [
+            "#00B500",
+            "#E6E600",
+            "#CA3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 600,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "2d8df4d6.55269c",
+        "type": "ui_gauge",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "63b8d67e.867bc",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity 02",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00B500",
+            "#E6E600",
+            "#CA3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 590,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "da68b3fa.469bc8",
+        "type": "ui_chart",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "46b69da5.90d2f4",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature 02",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-20",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 600,
+        "y": 420,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "175ceb8.c940015",
+        "type": "ui_chart",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "b4ed370f.0bb2c8",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Humidity 02",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 590,
+        "y": 500,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2804b736.825a28",
+        "type": "average-bars",
+        "z": "aaec1fdb.ceee98",
+        "name": "Humidity 02",
+        "title": "Humidity 02",
+        "period": "week",
+        "yMin": "0",
+        "yMax": "100",
+        "showBarsValue": false,
+        "showScaleValue": false,
+        "showLastValue": false,
+        "showAverageValue": false,
+        "showMinimumValue": false,
+        "showMaximumValue": false,
+        "maxBar": 30,
+        "topColor": "#FF0000",
+        "bottomColor": "#FFFF00",
+        "unit": "%",
+        "fontColor": "#AAAAAA",
+        "barStyle": "Equalizer",
+        "decimal": "2",
+        "x": 590,
+        "y": 540,
+        "wires": [
+            [
+                "7bb2a528.2776cc"
+            ]
+        ]
+    },
+    {
+        "id": "7bb2a528.2776cc",
+        "type": "ui_template",
+        "z": "aaec1fdb.ceee98",
+        "group": "2eaf6bd8.e63d64",
+        "name": "",
+        "order": 0,
+        "width": "6",
+        "height": "4",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": false,
+        "templateScope": "local",
+        "x": 800,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d73a0ac.605657",
+        "type": "mqtt in",
+        "z": "aaec1fdb.ceee98",
+        "name": "conditions.03-temperature",
+        "topic": "vergissberlin/feeds/conditions.03-temperature",
+        "qos": "2",
+        "broker": "fa408ea0.c7f7b8",
+        "x": 170,
+        "y": 660,
+        "wires": [
+            [
+                "2498c68d.bd7bca",
+                "97d696b4.0dbac"
+            ]
+        ]
+    },
+    {
+        "id": "8e2be7c0.6be49",
+        "type": "mqtt in",
+        "z": "aaec1fdb.ceee98",
+        "name": "conditions.03-humidity",
+        "topic": "vergissberlin/feeds/conditions.03-humidity",
+        "qos": "2",
+        "broker": "fa408ea0.c7f7b8",
+        "x": 180,
+        "y": 740,
+        "wires": [
+            [
+                "f53ed443.843fb",
+                "ec0d88ed.1f6eb8",
+                "427ac933.3308f8"
+            ]
+        ]
+    },
+    {
+        "id": "2498c68d.bd7bca",
+        "type": "ui_gauge",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "4d3c030b.3919a4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature 03",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "-5",
+        "max": "40",
+        "colors": [
+            "#00B500",
+            "#E6E600",
+            "#CA3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 600,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "f53ed443.843fb",
+        "type": "ui_gauge",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "63b8d67e.867bc",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity 03",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00B500",
+            "#E6E600",
+            "#CA3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 590,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "97d696b4.0dbac",
+        "type": "ui_chart",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "46b69da5.90d2f4",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature 03",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-20",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 600,
+        "y": 700,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ec0d88ed.1f6eb8",
+        "type": "ui_chart",
+        "z": "aaec1fdb.ceee98",
+        "name": "",
+        "group": "b4ed370f.0bb2c8",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "label": "Humidity 03",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "useOldStyle": false,
+        "x": 590,
+        "y": 780,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "427ac933.3308f8",
+        "type": "average-bars",
+        "z": "aaec1fdb.ceee98",
+        "name": "Humidity 03",
+        "title": "Humidity 03",
+        "period": "week",
+        "yMin": "0",
+        "yMax": "100",
         "showBarsValue": true,
         "showScaleValue": true,
         "showLastValue": true,
@@ -337,32 +919,372 @@
         "unit": "%",
         "fontColor": "#AAAAAA",
         "barStyle": "Equalizer",
-        "decimal": 1,
-        "x": 460,
-        "y": 280,
+        "decimal": "2",
+        "x": 590,
+        "y": 820,
         "wires": [
             [
-                "5839c1a5.23b6a"
+                "ddd328de.36051"
             ]
         ]
     },
     {
-        "id": "5839c1a5.23b6a",
+        "id": "ddd328de.36051",
         "type": "ui_template",
         "z": "aaec1fdb.ceee98",
-        "group": "46b69da5.90d2f4",
+        "group": "2eaf6bd8.e63d64",
         "name": "",
         "order": 0,
-        "width": 0,
-        "height": 0,
+        "width": "6",
+        "height": "4",
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
         "storeOutMessages": true,
-        "fwdInMessages": true,
+        "fwdInMessages": false,
         "templateScope": "local",
-        "x": 680,
-        "y": 280,
+        "x": 800,
+        "y": 820,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "44d49df5.fd78b4",
+        "type": "mqtt out",
+        "z": "553f1134.e6b828",
+        "name": "An FHEM",
+        "topic": "/Service/fhem/cmnd",
+        "qos": "",
+        "retain": "",
+        "broker": "3ccd643c.fc204c",
+        "x": 460,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "18751635.ec60d2",
+        "type": "http in",
+        "z": "3bfa1c6.68b46e4",
+        "name": "",
+        "url": "/alexa",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "d1a4612.ea3c82",
+                "1e660f2e.00b109"
+            ]
+        ]
+    },
+    {
+        "id": "d1a4612.ea3c82",
+        "type": "debug",
+        "z": "3bfa1c6.68b46e4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 240,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c0043ffc.73bfe",
+        "type": "template",
+        "z": "3bfa1c6.68b46e4",
+        "name": "rote Boxen",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "plain",
+        "template": "{\n    \"version\": \"1.0\",\n    \"response\": {\n        \"outputSpeech\": {\n            \"type\": \"PlainText\",\n            \"text\": \"Es sind ziemlich viele Boxen rot. Ist das schlimm?\"\n        },\n        \"shoukdEndSession\": true\n    }\n}",
+        "output": "str",
+        "x": 610,
+        "y": 100,
+        "wires": [
+            [
+                "17ba534.fc5e6ad"
+            ]
+        ]
+    },
+    {
+        "id": "17ba534.fc5e6ad",
+        "type": "json",
+        "z": "3bfa1c6.68b46e4",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 770,
+        "y": 100,
+        "wires": [
+            [
+                "b80a1cb.8fcc36"
+            ]
+        ]
+    },
+    {
+        "id": "b80a1cb.8fcc36",
+        "type": "http response",
+        "z": "3bfa1c6.68b46e4",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "1e660f2e.00b109",
+        "type": "switch",
+        "z": "3bfa1c6.68b46e4",
+        "name": "request type",
+        "property": "payload.request.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "IntentRequest",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 270,
+        "y": 100,
+        "wires": [
+            [
+                "d311f889.7c673"
+            ]
+        ]
+    },
+    {
+        "id": "d311f889.7c673",
+        "type": "switch",
+        "z": "3bfa1c6.68b46e4",
+        "name": "indents",
+        "property": "payload.request.intent.name",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "getStatus",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "triggerPipeline",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 440,
+        "y": 100,
+        "wires": [
+            [
+                "c0043ffc.73bfe"
+            ],
+            [],
+            [
+                "97c61131.a5b318"
+            ]
+        ]
+    },
+    {
+        "id": "97c61131.a5b318",
+        "type": "template",
+        "z": "3bfa1c6.68b46e4",
+        "name": "kein Plan",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "plain",
+        "template": "{\n    \"version\": \"1.0\",\n    \"response\": {\n        \"outputSpeech\": {\n            \"type\": \"PlainText\",\n            \"text\": \"Ich habe keinen Plan was Du willst Alter. Kriegst gleich nen Klappstuhl!\"\n        },\n        \"shoukdEndSession\": true\n    }\n}",
+        "output": "str",
+        "x": 600,
+        "y": 140,
+        "wires": [
+            [
+                "17ba534.fc5e6ad"
+            ]
+        ]
+    },
+    {
+        "id": "12367d2.c00fc83",
+        "type": "inject",
+        "z": "3bfa1c6.68b46e4",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 440,
+        "y": 260,
+        "wires": [
+            [
+                "97c61131.a5b318"
+            ]
+        ]
+    },
+    {
+        "id": "bbbbb41e.e9f668",
+        "type": "github-repo",
+        "z": "f3ffaee7.bf291",
+        "github": "51cafaad.034724",
+        "name": "Show node-red repo info",
+        "username": "vergissberlin",
+        "usernameType": "str",
+        "repository": "bashlight",
+        "repositoryType": "str",
+        "action": "show",
+        "branch": "master",
+        "branchType": "str",
+        "path": "",
+        "pathType": "str",
+        "pathto": "",
+        "pathtoType": "str",
+        "contents": "payload",
+        "contentsType": "msg",
+        "outputs": "1",
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "47673ac0.fdeb24"
+            ]
+        ]
+    },
+    {
+        "id": "2a20f63.647610a",
+        "type": "github-user",
+        "z": "f3ffaee7.bf291",
+        "github": "51cafaad.034724",
+        "name": "Get your personal info",
+        "action": "orgs",
+        "outputs": "1",
+        "options": "",
+        "optionsType": "json",
+        "username": "vergissberlin",
+        "usernameType": "str",
+        "orgname": "",
+        "orgnameType": "str",
+        "x": 327,
+        "y": 197,
+        "wires": [
+            [
+                "47673ac0.fdeb24"
+            ]
+        ]
+    },
+    {
+        "id": "25e78f3a.d6ea",
+        "type": "inject",
+        "z": "f3ffaee7.bf291",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 131,
+        "y": 119,
+        "wires": [
+            [
+                "bbbbb41e.e9f668"
+            ]
+        ]
+    },
+    {
+        "id": "47673ac0.fdeb24",
+        "type": "debug",
+        "z": "f3ffaee7.bf291",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 661,
+        "y": 192,
+        "wires": []
+    },
+    {
+        "id": "62530802.44c648",
+        "type": "inject",
+        "z": "f3ffaee7.bf291",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 127,
+        "y": 194,
+        "wires": [
+            [
+                "2a20f63.647610a"
+            ]
+        ]
+    },
+    {
+        "id": "24bdf403.eeea8c",
+        "type": "github-repo",
+        "z": "f3ffaee7.bf291",
+        "github": "51cafaad.034724",
+        "name": "Get contents of msg.payload at 'master'",
+        "username": "vergissberlin",
+        "usernameType": "str",
+        "repository": "payload",
+        "repositoryType": "msg",
+        "action": "listforks",
+        "branch": "master",
+        "branchType": "str",
+        "path": "",
+        "pathType": "str",
+        "pathto": "",
+        "pathtoType": "str",
+        "contents": "payload",
+        "contentsType": "msg",
+        "outputs": "1",
+        "x": 399,
+        "y": 279,
+        "wires": [
+            [
+                "47673ac0.fdeb24"
+            ]
+        ]
+    },
+    {
+        "id": "52d3a629.281ef8",
+        "type": "inject",
+        "z": "f3ffaee7.bf291",
+        "name": "",
+        "topic": "",
+        "payload": "bashlight",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 132,
+        "y": 280,
+        "wires": [
+            [
+                "24bdf403.eeea8c"
+            ]
         ]
     }
 ]
