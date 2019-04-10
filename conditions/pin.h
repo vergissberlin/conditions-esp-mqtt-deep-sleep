@@ -11,11 +11,11 @@
 
 void setupPin() {
   pinMode(pinLed, OUTPUT);
-}
-
-void loopPin() {
   digitalWrite(pinLed, LOW);  
   delay(600);
   digitalWrite(pinLed, HIGH);
   delay(600);
+}
+
+void loopPin() {
 }

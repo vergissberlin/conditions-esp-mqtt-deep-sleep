@@ -18,10 +18,7 @@
 
   https://github.com/vergissberlin/coffee-bin-mqtt
 */
-
-#include <ArduinoOTA.h>
-#include <Adafruit_MQTT.h>
-#include <Adafruit_MQTT_Client.h>
+#include <ArduinoJson.h>
 #include <ESP8266mDNS.h>
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
@@ -29,30 +26,40 @@
 // Load configuration
 #include "config.h"
 
-// Include libraries
+// Include libraries (order matters)
 #include "blink.h"
 #include "wifi.h"
 #include "mqtt.h"
 #include "pin.h"
-#include "sleep.h"
-#include "dht.h"
+//#include "sleep.h"
+#include "sensor_dht.h"
 
+
+// Data storage
+StaticJsonDocument<512> doc;
 
 void setup() {
   Serial.begin(serialBautRate);
-  delay(1000);
-  Serial.println(F("\n\t✰✰✰  Conditions booting ✰✰✰ "));
+  while (!Serial) continue;
+  
+  Serial.println(F("\n\t✰✰✰  Conditions booting ✰✰✰ \n\n"));
+  Serial.print("Device id: ");
+  Serial.println(String(deviceId));
 
-  setupWifi();
+  setupWifi(String(deviceId));
   setupPin();
-  setupMqtt();
+  setupMqtt(deviceId);
   setupDHT();
-
+  
+  doc["temperature"] = getTemperature();
+  doc["humidity"] = getHumidity();
+  
+  char payload[512];
+  serializeJson(doc, payload);
+  //client.publish("outTopic", payload);
+  mqttPublish(payload);
 }
 
 void loop() {
-  loopMqtt();
-  loopPin();
-  loopDHT();
-  loopSleep();
+  //loopSleep();
 }
