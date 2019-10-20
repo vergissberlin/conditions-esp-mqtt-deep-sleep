@@ -1,13 +1,25 @@
-===============
+==========
 conditions
-===============
+==========
 
-.. image:: https://readthedocs.org/projects/esp8266-mqtt-deep-sleep/badge/?version=latest
-    :target: https://esp8266-mqtt-deep-sleep.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/conditions-esp-mqtt-deep-sleep/badge/?version=latest
+    :target: https://conditions-esp-mqtt-deep-sleep.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
 MQTT sensor project for `DHT sensor <https://amzn.to/2zySODF>`_ to messure temperature an humanitiy, 
 send it to a MQTT broker (Adafruit in this example) and go to deep sleep. 
+
+.. image:: documentation/conditions-door.jpg
+    :alt: 3D printed case
+    :width: 30%
+.. image:: documentation/conditions-case.jpg
+    :alt: 3D printed case
+    :width: 30%
+.. image:: documentation/conditions-open.jpg
+    :alt: 3D printed case
+    :width: 30%
+
+
 
 Features
 ========
@@ -25,7 +37,7 @@ Hardware
     - Flash Mode:   DIO
     - Flash Speed:  40 MHz
 - DHT22
-
+- 3D `printed case <https://www.tinkercad.com/things/1bR34X0fXlm-esp01-dht11-and-18650-battery-lipo-case>`_
 
 Development
 ===========
