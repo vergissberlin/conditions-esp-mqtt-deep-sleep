@@ -9,16 +9,15 @@ conditions
 MQTT sensor project for `DHT sensor <https://amzn.to/2zySODF>`_ to messure temperature an humanitiy, 
 send it to a MQTT broker (Adafruit in this example) and go to deep sleep. 
 
-.. image:: documentation/conditions-door.jpg
+.. image:: docs/conditions-door.jpg
+    :alt: Case place on top of a door
+    :width: 112
+.. image:: docs/conditions-case.jpg
     :alt: 3D printed case
     :width: 112
-.. image:: documentation/conditions-case.jpg
-    :alt: 3D printed case
+.. image:: docs/conditions-open.jpg
+    :alt: The opened 3D printed case
     :width: 112
-.. image:: documentation/conditions-open.jpg
-    :alt: 3D printed case
-    :width: 112
-
 
 
 Features
