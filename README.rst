@@ -11,13 +11,13 @@ send it to a MQTT broker (Adafruit in this example) and go to deep sleep.
 
 .. image:: documentation/conditions-door.jpg
     :alt: 3D printed case
-    :width: 30%
+    :width: 112
 .. image:: documentation/conditions-case.jpg
     :alt: 3D printed case
-    :width: 30%
+    :width: 112
 .. image:: documentation/conditions-open.jpg
     :alt: 3D printed case
-    :width: 30%
+    :width: 112
 
 
 
