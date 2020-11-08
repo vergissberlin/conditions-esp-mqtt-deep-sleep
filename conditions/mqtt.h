@@ -1,12 +1,8 @@
 /*
   Conditions
-
-  MQTT bin project for conditions
-
-  Created 11 September 2018
   By André Lademann <vergissberlin@gmail.com>
 
-  https://pubsubclient.knolleary.net/api.html#connect4
+  https://github.com/vergissberlin/esp8266-mqtt-deep-sleep-dht
 */
 #include <PubSubClient.h>
 

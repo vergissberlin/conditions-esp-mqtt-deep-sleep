@@ -1,13 +1,13 @@
 /*
   Conditions
-
-  MQTT bin project for coffee-bin https://coffee-bin-mqtt.readthedocs.io/
-
-  Created 11 September 2018
   By André Lademann <vergissberlin@gmail.com>
 
-  https://github.com/vergissberlin/coffee-bin-mqtt
+  https://github.com/vergissberlin/esp8266-mqtt-deep-sleep-dht
 */
+#include <ESP8266mDNS.h>
+#include <ESP8266WiFi.h>
+#include <WiFiClient.h>
+#include <WiFiUdp.h>
 #include <ESP8266mDNS.h>
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>

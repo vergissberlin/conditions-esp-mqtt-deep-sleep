@@ -1,11 +1,6 @@
 /*
   Conditions
-
-  MQTT bin project for coffee-bin https://coffee-bin-mqtt.readthedocs.io/
-
-  Created 11 September 2018
   By André Lademann <vergissberlin@gmail.com>
-  
 
   REQUIRES the following Arduino libraries:
    - DHT Sensor Library: https://github.com/adafruit/DHT-sensor-library
@@ -44,7 +39,7 @@ float getHumidity(void) {
     Serial.println(F("Failed to read humidity from DHT sensor!"));
     return 0;
   } 
-  Serial.println("Humidity:\t\t" + String(humidity) + " %H");
+  Serial.println("Humidity:\t" + String(humidity) + " %H");
  
   return humidity;
 }

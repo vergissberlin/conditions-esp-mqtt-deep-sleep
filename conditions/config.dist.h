@@ -9,7 +9,7 @@ const int   mqttPort              = 1883;
 const char* mqttUsername          = "xxx";
 const char* mqttPassword          = "xxx";
       char* mqttFeed              = "/conditions/%s";           // %s will be replaced by the device id
-const char* mqttWillTopic         = "offline";
+const char* mqttWillTopic         = "/offline";
 const int   mqttQos               = 1;
 const int   mqttRetain            = 0;
 
